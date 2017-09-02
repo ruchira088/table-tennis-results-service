@@ -5,6 +5,9 @@ import scala.util.Try
 object InitializationService
 {
   def verifyEnvValues(): Try[Boolean] = for {
-    _ <- ConfigService.getEnvValue(TeamService.ENV_VALUE)
-  } yield true
+    teamServiceUrl <- ConfigService.getEnvValue(TeamService.ENV_VALUE)
+  } yield {
+    println(s"TEAM_SERVICE_URL: $teamServiceUrl")
+    true
+  }
 }
